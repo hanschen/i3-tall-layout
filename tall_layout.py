@@ -42,15 +42,11 @@ def set_layout():
         if (parent and "rect" in parent
                    and parent['layout'] != 'tabbed'
                    and parent['layout'] != 'stacked'):
-            height = parent['rect']['height']
-            width = parent['rect']['width']
+            height = win['rect']['height']
+            width = win['rect']['width']
 
-            if height > width:
-                new_layout = 'vertical'
-            else:
-                new_layout = 'horizontal'
-
-            i3.split(new_layout)
+            if height > width and parent['orientation'] != 'vertical':
+                i3.split('vertical')
 
 
 def print_help():
